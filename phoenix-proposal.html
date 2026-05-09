@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Proposal — Phoenix Barber Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2f4332;
+    --green-deep: #1e2c20;
+    --green-darker: #15201a;
+    --copper: #c08456;
+    --copper-bright: #e0a778;
+    --gold: #d4b27a;
+    --cream: #f5ecd9;
+    --cream-soft: #ede4d0;
+    --line: rgba(212, 178, 122, 0.25);
+    --line-strong: rgba(212, 178, 122, 0.5);
+    --ink: #1a1a1a;
+    --gray: #6b6b6b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #0d130f;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fdfbf6;
+    min-height: 100vh;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+  }
+
+  .hero {
+    background:
+      radial-gradient(ellipse at top, #3a5240 0%, var(--green-deep) 60%, var(--green-darker) 100%);
+    color: var(--cream);
+    padding: 48px 32px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(212,178,122,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(212,178,122,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    color: var(--copper-bright);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin-bottom: 8px;
+    position: relative;
+    line-height: 1.15;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--cream);
+    opacity: 0.85;
+    letter-spacing: 0.03em;
+    position: relative;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--copper);
+    margin: 24px auto;
+    position: relative;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    max-width: 360px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+  }
+
+  .hero-meta-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--copper-bright);
+    opacity: 0.8;
+    margin-bottom: 2px;
+  }
+
+  .hero-meta-value {
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .body { padding: 0; }
+
+  section {
+    padding: 36px 32px;
+    border-bottom: 1px solid #ece6d4;
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--green-deep);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-top: 20px;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    font-size: 15px;
+    color: #2a2a2a;
+    margin-bottom: 14px;
+  }
+
+  p.lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--green-deep);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .pillar {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .pillar-mark {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--copper);
+    border-radius: 50%;
+    color: var(--copper);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .pillar-text strong {
+    color: var(--green-deep);
+    font-weight: 600;
+  }
+
+  .pillar-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #2a2a2a;
+  }
+
+  ul.checklist {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  ul.checklist li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    font-size: 14.5px;
+    color: #3a3a3a;
+    line-height: 1.5;
+  }
+
+  ul.checklist li::before {
+    content: "×";
+    position: absolute;
+    left: 4px;
+    top: -1px;
+    color: var(--copper);
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  ul.checklist.inc li::before {
+    content: "✓";
+    color: var(--green);
+  }
+
+  .timeline {
+    margin-top: 18px;
+    position: relative;
+  }
+
+  .milestone {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .milestone:first-child { border-top: 1px solid var(--line-strong); }
+  .milestone:last-child { border-bottom: 1px solid var(--line-strong); }
+
+  .milestone-week {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--copper);
+    letter-spacing: 0.1em;
+    padding-top: 2px;
+  }
+
+  .milestone-name {
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+
+  .milestone-detail {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .price-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .price-card {
+    background: #fff;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .price-card.feature {
+    background: var(--green-deep);
+    color: var(--cream);
+    border-color: var(--copper);
+  }
+
+  .price-card-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .price-card.feature .price-card-label {
+    color: var(--copper-bright);
+  }
+
+  .price-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--green-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .price-card.feature .price-card-name { color: #ffffff; }
+
+  .price-card-amount {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--green-deep);
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+
+  .price-card.feature .price-card-amount { color: var(--gold); }
+
+  .price-card-amount .per {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-left: 6px;
+  }
+
+  .price-card.feature .price-card-amount .per { color: var(--cream); opacity: 0.7; }
+
+  .price-card-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gray);
+    margin-top: 12px;
+    line-height: 1.45;
+    padding-top: 12px;
+    border-top: 1px solid #ece6d4;
+  }
+
+  .price-card.feature .price-card-note {
+    color: var(--cream);
+    opacity: 0.85;
+    border-top-color: rgba(245, 236, 217, 0.15);
+  }
+
+  .price-card-meta {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #555;
+    padding-top: 12px;
+    border-top: 1px solid #ece6d4;
+  }
+
+  .price-card.feature .price-card-meta {
+    color: var(--cream);
+    border-top-color: rgba(245, 236, 217, 0.15);
+  }
+
+  .price-card-meta strong {
+    color: var(--green-deep);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+  }
+
+  .price-card.feature .price-card-meta strong { color: var(--copper-bright); }
+
+  .dual-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .dual-col h3 { margin-top: 0; }
+
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 44px;
+    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 30px;
+    height: 30px;
+    background: var(--green-deep);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .steps li strong {
+    color: var(--green-deep);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .steps li span {
+    color: #555;
+    font-size: 14px;
+  }
+
+  .footer-cta {
+    background: var(--green-deep);
+    color: var(--cream);
+    padding: 36px 32px;
+    text-align: center;
+  }
+
+  .footer-cta-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .footer-cta-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--cream);
+    opacity: 0.75;
+    margin-bottom: 20px;
+  }
+
+  .footer-cta-name {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--copper-bright);
+  }
+
+  @media (min-width: 600px) {
+    .hero { padding: 64px 48px 52px; }
+    .hero-title { font-size: 44px; }
+    section { padding: 48px; }
+    .dual-col {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Project Proposal</div>
+    <h1 class="hero-title">PHOENIX<br>BARBER STUDIO</h1>
+    <p class="hero-sub">Custom website, membership system, and digital presence rebuild</p>
+
+    <div class="hero-divider"></div>
+
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">Prepared For</div>
+        <div class="hero-meta-value">Phoenix Barber Studio</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Prepared By</div>
+        <div class="hero-meta-value">Ricardo Olea</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Date</div>
+        <div class="hero-meta-value">May 8, 2026</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Valid Through</div>
+        <div class="hero-meta-value">June 8, 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <section>
+      <div class="eyebrow">01 · The Scope</div>
+      <h2>What we're building</h2>
+      <p class="lead">A complete digital rebuild — replacing the current template site with a custom-designed presence that reflects the brand and turns visitors into paying members.</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-mark">I</div>
+          <div class="pillar-text"><strong>Custom website</strong> — rebuilt from scratch in your brand colors and identity. Fast, modern, built to convert.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark">II</div>
+          <div class="pillar-text"><strong>Membership system</strong> — customers sign up for VIP or Premium online and get charged automatically every month. No more chasing payments or paper sign-ups.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark">III</div>
+          <div class="pillar-text"><strong>Booking handoff</strong> — a clean "Book Now" experience that sends customers straight to your existing Booksy page. No disruption to how you currently run appointments.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark">IV</div>
+          <div class="pillar-text"><strong>Live integrations</strong> — Instagram feed pulled in automatically, Google reviews displayed on the site, all updating without you having to touch anything.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">02 · Boundaries</div>
+      <h2>What's not included</h2>
+      <p>To keep the project on time and on budget, the following are explicitly out of scope. Any of these can be added as separate work later.</p>
+
+      <ul class="checklist">
+        <li>Real-time Booksy availability sync (Booksy doesn't allow this — booking redirects to your Booksy page)</li>
+        <li>New logo or brand identity design (using your existing logo)</li>
+        <li>Professional photography (using your existing photos or stock)</li>
+        <li>Copywriting beyond editing what you provide</li>
+        <li>Email marketing platform setup (Mailchimp, etc.)</li>
+        <li>Paid ad campaigns or SEO content production</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="eyebrow">03 · Timeline</div>
+      <h2>Six weeks to launch</h2>
+      <p>Three milestones along the way so you always know where we are.</p>
+
+      <div class="timeline">
+        <div class="milestone">
+          <div class="milestone-week">WEEK 1</div>
+          <div>
+            <div class="milestone-name">Brand & content lock</div>
+            <div class="milestone-detail">All photos, copy, package details, and brand assets confirmed in writing.</div>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-week">WEEK 3</div>
+          <div>
+            <div class="milestone-name">Memberships live</div>
+            <div class="milestone-detail">VIP and Premium signup working in a test environment. You can run a real transaction.</div>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-week">WEEK 6</div>
+          <div>
+            <div class="milestone-name">Launch</div>
+            <div class="milestone-detail">Full site live at phoenixbarberstudio.com. All integrations active.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">04 · Investment</div>
+      <h2>Pricing</h2>
+
+      <div class="price-cards">
+
+        <div class="price-card">
+          <div class="price-card-label">One-time setup</div>
+          <div class="price-card-name">Build & Launch</div>
+          <div class="price-card-amount">$1,500<span class="per">flat</span></div>
+          <div class="price-card-note">Founding-client rate. Standard pricing for this scope is $3,500. In exchange, Phoenix Barber Studio will be featured as a portfolio case study and provide a written testimonial within 30 days of launch.</div>
+          <div class="price-card-meta">
+            <strong>Payment Terms</strong>
+            $750 due at signing via Zelle (project starts when this clears)<br>
+            $750 due at launch via Zelle
+          </div>
+        </div>
+
+        <div class="price-card feature">
+          <div class="price-card-label">Recurring</div>
+          <div class="price-card-name">Monthly Service</div>
+          <div class="price-card-amount">$200<span class="per">/ month</span></div>
+          <div class="price-card-note">Starts the day the site goes live. Covers everything below — no surprise bills.</div>
+        </div>
+
+      </div>
+
+      <div class="dual-col">
+        <div>
+          <h3>Included every month</h3>
+          <ul class="checklist inc">
+            <li>Hosting, security, daily backups</li>
+            <li>All third-party services (database, email, analytics, image delivery)</li>
+            <li>Up to 2 hours of edits or small additions per month</li>
+            <li>Response within 2 business days for non-urgent items</li>
+            <li>Quarterly maintenance — Instagram reconnect, reviews refresh, Stripe health check</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Not included</h3>
+          <ul class="checklist">
+            <li>New pages, redesigns, or new integrations (quoted separately)</li>
+            <li>Photography, copywriting, or graphic design beyond minor edits</li>
+            <li>Same-day or emergency requests (rush fee applies)</li>
+            <li>Anything beyond 2 hours/month — billed at $125/hour</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">05 · How We Start</div>
+      <h2>Next steps</h2>
+      <p>If this looks right, here's how we move forward:</p>
+
+      <ol class="steps">
+        <li>
+          <strong>Reply "approved"</strong>
+          <span>I'll send over a formal agreement to sign along with deposit details.</span>
+        </li>
+        <li>
+          <strong>Sign &amp; send the $750 deposit via Zelle</strong>
+          <span>Project kicks off as soon as the deposit clears.</span>
+        </li>
+        <li>
+          <strong>30-minute kickoff call</strong>
+          <span>We lock the brand kit, package details, and what content you have ready.</span>
+        </li>
+        <li>
+          <strong>Week 6: launch</strong>
+          <span>You go from a generic template to a brand that matches the chair you sit in.</span>
+        </li>
+      </ol>
+    </section>
+
+  </div>
+
+  <div class="footer-cta">
+    <div class="footer-cta-title">JOIN TODAY · LAUNCH IN 6 WEEKS</div>
+    <div class="footer-cta-sub">Reply "approved" to get started</div>
+    <div class="footer-cta-name">— Ricardo Olea</div>
+  </div>
+
+</div>
+
+</body>
+</html>
